@@ -86,7 +86,7 @@ const CreatePodcast = () =>{
                   <FormControl>
                     <Input 
                       placeholder="Podcast" {...field} 
-                      className="input-class focus-visible:ring-orange-1"
+                      className="input-class focus:ring-orange-1"
                     />
                   </FormControl>
                   <FormMessage className="text-white-1" />
@@ -99,8 +99,8 @@ const CreatePodcast = () =>{
                 Select AI Voice
               </Label>
 
-              <Select onValueChange={(value)=> setValueType(value)}>
-                <SelectTrigger className={cn("text-16 w-full border-none bg-black-1 text-gray-1")}>
+              <Select onValueChange={(value)=> setVoiceType(value)}>
+                <SelectTrigger className={cn("text-16 w-full border-none bg-black-1 text-gray-1 focus:ring-orange-1")}>
                   <SelectValue 
                     placeholder="Select AI Voice" 
                     className="placeholder:text-gray-1"
@@ -135,7 +135,7 @@ const CreatePodcast = () =>{
                   <FormControl>
                     <Textarea 
                       placeholder="Write a short podcast description" {...field} 
-                      className="input-class focus-visible:ring-orange-1"
+                      className="input-class focus:ring-orange-1"
                     />
                   </FormControl>
                   <FormMessage className="text-white-1" />
@@ -145,7 +145,15 @@ const CreatePodcast = () =>{
           </div> 
 
           <div className="flex flex-col pt-10">
-              <GeneratePodcast/>
+              <GeneratePodcast
+                setAudioStorageId= {setAudioStorageId}
+                setAudio= {setAudioUrl}
+                voiceType = {voiceType!}
+                audio = {audioUrl}
+                voicePrompt = {voicePrompt}
+                setVoicePrompt = {setVoicePrompt}
+                setAudioDuration = {setAudioDuration}
+              />
               <GenerateThumbnail/>
 
               <div className="mt-10 w-full">
